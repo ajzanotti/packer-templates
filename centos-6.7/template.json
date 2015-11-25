@@ -12,13 +12,21 @@
 			"boot_command": [
 				"<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
 			],
-			"guest_additions_mode": "disable",
+			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"guest_os_type": "RedHat_64",
 			"http_directory": "centos-6.7/http",
 			"shutdown_command": "echo 'packer' | shutdown -P now",
 			"vboxmanage": [
 				["modifyvm", "{{.Name}}", "--memory", "512"],
 				["modifyvm", "{{.Name}}", "--cpus", "1"]
+			]
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"scripts": [
+				"centos-6.7/scripts/virtualbox.sh"
 			]
 		}
 	]
