@@ -27,8 +27,15 @@
 		{
 			"type": "shell",
 			"scripts": [
-				"centos-7.1/scripts/virtualbox.sh"
+				"centos-7.1/scripts/virtualbox.sh",
+				"centos-7.1/scripts/vagrant.sh"
 			]
+		}
+	],
+	"post-processors": [
+		{
+			"type": "vagrant",
+			"output": "{{.BuildName}}_{{.Provider}}{{timestamp}}.box"
 		}
 	]
 }
