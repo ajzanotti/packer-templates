@@ -34,7 +34,8 @@
 	],
 	"post-processors": [
 		{
-			"type": "vagrant"
+			"type": "vagrant",
+			"output": "{{.BuildName}}_{{.Provider}}{{timestamp}}.box"
 		}
 	]
 }
