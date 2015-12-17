@@ -1,5 +1,5 @@
 {
-	"description": "CentOS 6.7 64-bit",
+	"description": "CentOS 6 64-bit",
 	"min_packer_version": "0.7.5",
 	"builders": [
 		{
@@ -15,7 +15,7 @@
 			],
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"guest_os_type": "RedHat_64",
-			"http_directory": "centos-6.7/http",
+			"http_directory": "centos-6/http",
 			"shutdown_command": "echo 'packer' | shutdown -P now",
 			"vboxmanage": [
 				["modifyvm", "{{.Name}}", "--memory", "512"],
@@ -27,8 +27,8 @@
 		{
 			"type": "shell",
 			"scripts": [
-				"centos-6.7/scripts/virtualbox.sh",
-				"centos-6.7/scripts/vagrant.sh"
+				"centos-6/scripts/virtualbox.sh",
+				"centos-6/scripts/vagrant.sh"
 			]
 		}
 	],
