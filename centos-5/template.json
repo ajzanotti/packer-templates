@@ -1,0 +1,41 @@
+{
+	"description": "CentOS 5 64-bit",
+	"min_packer_version": "0.7.5",
+	"builders": [
+		{
+			"name": "zanotti_centos-5.11_x86_64",
+			"type": "virtualbox-iso",
+			"iso_checksum": "b6eb0565b636513b90663ff01c6ec4da5058baff0d7d4007d187be997dd985f8",
+			"iso_checksum_type": "sha256",
+			"iso_url": "http://linux.cc.lehigh.edu/centos/5.11/isos/x86_64/CentOS-5.11-x86_64-bin-DVD-1of2.iso",
+			"ssh_username": "root",
+			"ssh_password": "toor",
+			"boot_command": [
+				"linux text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
+			],
+			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+			"guest_os_type": "RedHat_64",
+			"http_directory": "centos-5/http",
+			"shutdown_command": "echo 'packer' | poweroff",
+			"vboxmanage": [
+				["modifyvm", "{{.Name}}", "--memory", "512"],
+				["modifyvm", "{{.Name}}", "--cpus", "1"]
+			]
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"scripts": [
+				"centos-5/scripts/virtualbox.sh",
+				"centos-5/scripts/vagrant.sh"
+			]
+		}
+	],
+	"post-processors": [
+		{
+			"type": "vagrant",
+			"output": "{{.BuildName}}_{{.Provider}}{{timestamp}}.box"
+		}
+	]
+}
