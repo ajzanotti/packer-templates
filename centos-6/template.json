@@ -8,7 +8,7 @@
 	"min_packer_version": "0.7.5",
 	"builders": [
 		{
-			"name": "zanotti_centos-6.7_x86_64",
+			"name": "centos-6.7.x86_64",
 			"type": "virtualbox-iso",
 			"iso_checksum": "9d3fec5897be6b3fed4d3dda80b8fa7bb62c616bbfd4bdcd27295ca9b764f498",
 			"iso_checksum_type": "sha256",
