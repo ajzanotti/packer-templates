@@ -1,4 +1,9 @@
 {
+	"variables": {
+		"cpus": "1",
+		"memory": "512",
+		"mirror": "http://mirrors.kernel.org"
+	},
 	"description": "CentOS 7 64-bit",
 	"min_packer_version": "0.7.5",
 	"builders": [
@@ -7,7 +12,7 @@
 			"type": "virtualbox-iso",
 			"iso_checksum": "f90e4d28fa377669b2db16cbcb451fcb9a89d2460e3645993e30e137ac37d284",
 			"iso_checksum_type": "sha256",
-			"iso_url": "http://mirrors.kernel.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso",
+			"iso_url": "{{user `mirror`}}/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso",
 			"ssh_username": "root",
 			"ssh_password": "toor",
 			"boot_command": [
@@ -18,8 +23,8 @@
 			"http_directory": "centos-7/http",
 			"shutdown_command": "echo 'packer' | shutdown -P now",
 			"vboxmanage": [
-				["modifyvm", "{{.Name}}", "--memory", "512"],
-				["modifyvm", "{{.Name}}", "--cpus", "1"]
+				["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+				["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
 			]
 		}
 	],
