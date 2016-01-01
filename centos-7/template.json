@@ -32,6 +32,7 @@
 		{
 			"type": "shell",
 			"scripts": [
+				"scripts/updatePackages.sh",
 				"scripts/virtualbox.sh",
 				"scripts/vagrant.sh"
 			]
