@@ -16,9 +16,9 @@ DISTRO_VERSION="unknown"
 GetDistroVersion()
 {
   distroVersionString=$(awk '{print $(NF-1);}' /etc/redhat-release)
-  regex='([0-9])\.([0-9]+)'
+  regex='([0-9]{1})\.([0-9]{1,2})(\.[0-9]{4})?'
 
-  if [[ "${distroVersionString}" =~ "${regex}" ]]
+  if [[ "${distroVersionString}" =~ ${regex} ]]
   then
     DISTRO_VERSION="${BASH_REMATCH[1]}"
   fi
