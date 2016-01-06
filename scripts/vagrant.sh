@@ -4,8 +4,9 @@
 #
 #	vagrant.sh
 #
-#		This script performs all setup required to prepare a
-#		build for the vagrant post-processor.
+#   This script performs all setup required to prepare a
+#   build for the vagrant post-processor minus the installation
+#   of VirtualBox Guest Additions (see virtualbox.sh)
 #
 #
 ###################################################################
