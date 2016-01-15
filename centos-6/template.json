@@ -5,10 +5,10 @@
 		"mirror": "http://mirrors.kernel.org"
 	},
 	"description": "CentOS 6 64-bit",
-	"min_packer_version": "0.7.5",
+	"min_packer_version": "0.8.6",
 	"builders": [
 		{
-			"name": "centos-6.x86_64",
+			"name": "vagrant-centos-6.x86_64",
 			"type": "virtualbox-iso",
 			"iso_checksum": "9d3fec5897be6b3fed4d3dda80b8fa7bb62c616bbfd4bdcd27295ca9b764f498",
 			"iso_checksum_type": "sha256",
@@ -41,7 +41,7 @@
 	"post-processors": [
 		{
 			"type": "vagrant",
-			"output": "vagrant-{{.BuildName}}_{{.Provider}}{{timestamp}}.box"
+			"output": "{{build_name}}_{{.Provider}}{{timestamp}}.box"
 		}
 	]
 }
