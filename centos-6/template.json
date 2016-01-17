@@ -1,9 +1,4 @@
 {
-	"variables": {
-		"cpus": "1",
-		"memory": "512",
-		"mirror": "http://mirrors.kernel.org"
-	},
 	"description": "CentOS 6 64-bit",
 	"min_packer_version": "0.8.6",
 	"builders": [
