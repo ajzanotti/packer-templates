@@ -28,7 +28,7 @@ packer build -var-file=centos-7/variables.json centos-7/template.json
 
 Importing and launching the build output
 ```Shell
-vagrant box add my_name/box_name <NAME>.box
+vagrant box add my_name/box_name output_name.box
 
 mkdir test
 cd test
