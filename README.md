@@ -1,6 +1,6 @@
 # ajzanotti-packer-templates
 
-This project contains Packer templates for building and provisioning base VM boxes.
+This project contains Packer templates for building and provisioning base VM images.
 
 ## Requirements
 
@@ -46,7 +46,7 @@ situation without an investment on your part.
 
 ## Contributing
 
-For instructions on contributing to this project please see the information in CONTRIBUTORS.md.
+For instructions on contributing to this project please see the information in CONTRIBUTING.md.
 
 ## License
 

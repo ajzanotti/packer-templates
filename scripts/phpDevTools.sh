@@ -4,8 +4,8 @@
 #
 #	phpDevTools.sh
 #
-#   Installs PHP development tools (Composer, bower, node, etc).
-#   The script requires that PHP is installed first
+#   Installs PHP development tools (Node, Composer, Gulp, Bower,
+#   Laravel). The script requires that PHP is installed first
 #   (see LAMP.sh).
 #
 #   Supports CentOS 6 and 7. Does NOT support CentOS 5.
@@ -30,6 +30,14 @@ GetDistroVersion
 
 case "${DISTRO_VERSION}" in
   [6-7])
+    nodejs_version="stable"
+
+    # NodeJS v4+ requires c++11 compiler not available in CentOS 6 repos
+    if [ "${DISTRO_VERSION}" -eq "6" ]
+    then
+      nodejs_version="v0.12.9"
+    fi
+
     # Install NodeJS / npm
     curl --silent --location https://rpm.nodesource.com/setup | bash -
     yum install nodejs -y
@@ -37,7 +45,7 @@ case "${DISTRO_VERSION}" in
     # Upgrade NodeJS / npm to latest stable
     npm cache clean -f
     npm install --global n
-    n stable
+    n ${nodejs_version}
 
     # Install composer
     curl -sS https://getcomposer.org/installer | php
@@ -54,7 +62,13 @@ case "${DISTRO_VERSION}" in
     then
       VAGRANT_HOME=$(grep vagrant /etc/passwd | awk -F : '{print $6;}')
       su - vagrant -c "composer global require \"laravel/installer=~1.1\""
-      su - vagrant -c "echo \"export PATH=$PATH:/usr/local/bin:${VAGRANT_HOME}/.composer/vendor/bin\" >> .bash_profile"
+
+      if [ "${DISTRO_VERSION}" -eq "6" ]
+      then
+        su - vagrant -c "echo \"export PATH=$PATH:/usr/local/bin:${VAGRANT_HOME}/.composer/vendor/bin\" >> .bash_profile"
+      else
+        su - vagrant -c "echo \"export PATH=$PATH:/usr/local/bin:${VAGRANT_HOME}/.config/composer/vendor/bin\" >> .bash_profile"
+      fi
     fi
     ;;
   *)
