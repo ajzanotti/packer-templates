@@ -62,7 +62,13 @@ case "${DISTRO_VERSION}" in
     then
       VAGRANT_HOME=$(grep vagrant /etc/passwd | awk -F : '{print $6;}')
       su - vagrant -c "composer global require \"laravel/installer=~1.1\""
-      su - vagrant -c "echo \"export PATH=$PATH:/usr/local/bin:${VAGRANT_HOME}/.composer/vendor/bin\" >> .bash_profile"
+
+      if [ "${DISTRO_VERSION}" -eq "6" ]
+      then
+        su - vagrant -c "echo \"export PATH=$PATH:/usr/local/bin:${VAGRANT_HOME}/.composer/vendor/bin\" >> .bash_profile"
+      else
+        su - vagrant -c "echo \"export PATH=$PATH:/usr/local/bin:${VAGRANT_HOME}/.config/composer/vendor/bin\" >> .bash_profile"
+      fi
     fi
     ;;
   *)
