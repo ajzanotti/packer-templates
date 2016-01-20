@@ -4,8 +4,8 @@
 #
 #	phpDevTools.sh
 #
-#   Installs PHP development tools (Composer, bower, node, etc).
-#   The script requires that PHP is installed first
+#   Installs PHP development tools (Node, Composer, Gulp, Bower,
+#   Laravel). The script requires that PHP is installed first
 #   (see LAMP.sh).
 #
 #   Supports CentOS 6 and 7. Does NOT support CentOS 5.
