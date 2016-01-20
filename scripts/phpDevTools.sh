@@ -30,6 +30,14 @@ GetDistroVersion
 
 case "${DISTRO_VERSION}" in
   [6-7])
+    nodejs_version="stable"
+
+    # NodeJS v4+ requires c++11 compiler not available in CentOS 6 repos
+    if [ "${DISTRO_VERSION}" -eq "6" ]
+    then
+      nodejs_version="v0.12.9"
+    fi
+
     # Install NodeJS / npm
     curl --silent --location https://rpm.nodesource.com/setup | bash -
     yum install nodejs -y
@@ -37,7 +45,7 @@ case "${DISTRO_VERSION}" in
     # Upgrade NodeJS / npm to latest stable
     npm cache clean -f
     npm install --global n
-    n stable
+    n ${nodejs_version}
 
     # Install composer
     curl -sS https://getcomposer.org/installer | php
