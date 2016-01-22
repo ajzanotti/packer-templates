@@ -4,9 +4,9 @@ This project contains Packer templates for building and provisioning base VM ima
 
 ## Requirements
 
-* [Vagrant](https://www.vagrantup.com/) - "creates and configures lightweight, reproducible, and portable development environments"
-* [Packer](https://www.packer.io/) - "creates machine and container images for multiple platforms from a single source configuration"
-* [VirtualBox](https://www.virtualbox.org/) - "a general-purpose full virtualizer for x86 hardware"
+1. [Packer](https://www.packer.io/)
+2. [Vagrant](https://www.vagrantup.com/)
+3. [VirtualBox](https://www.virtualbox.org/)
 
 ## Usage
 
@@ -37,16 +37,6 @@ vagrant up
 ```
 
 For more information on Vagrant commands see the [documentation](https://docs.vagrantup.com).
-
-## Disclaimer
-
-The templates and scripts provided in this project build and provision basic VMs for general use. They are intended to serve as a useful
-starting point for further customization. Therefore, it should not be expected that they will fully satisfy the needs of your particular
-situation without an investment on your part.
-
-## Contributing
-
-For instructions on contributing to this project please see the information in CONTRIBUTING.md.
 
 ## License
 
