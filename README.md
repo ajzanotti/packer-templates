@@ -10,20 +10,17 @@ This project contains Packer templates for building and provisioning base VM ima
 
 ## Usage
 
-Download the project, open a terminal, and position yourself in the project root. The provisioning scripts in the Packer templates are
-referenced relative to this location, so commands must be executed at the project root or they will fail. The sample commands provided
-below are for a Linux terminal but are similar for Windows.
+Position yourself in the project root. The provisioning scripts in the templates are referenced
+relative to this location, so commands must be executed there or they will fail.
 
 To verify a template
 ```Shell
-packer validate -var-file=centos-7/variables.json centos-7/template.json
-
 packer validate centos-7/template.json
 ```
 
 To perform a build
 ```Shell
-packer build -var-file=centos-7/variables.json centos-7/template.json
+packer build -var-file=variables.json centos-7/template.json
 ```
 
 Importing and launching the build output
