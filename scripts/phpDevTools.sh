@@ -38,9 +38,9 @@ case "${DISTRO_VERSION}" in
       nodejs_version="v0.12.9"
     fi
 
-    # Install NodeJS / npm
+    # Install NodeJS / npm and c / c++ compilers
     curl --silent --location https://rpm.nodesource.com/setup | bash -
-    yum install nodejs -y
+    yum install nodejs gcc gcc-c++ -y
 
     # Upgrade NodeJS / npm to latest stable
     npm cache clean -f
