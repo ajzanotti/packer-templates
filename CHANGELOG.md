@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## v1.0.2 (2016-06-30)
+### Modified
+* Updated CentOS ISO to 6.8
+
 ## v1.0.1 (2016-01-24)
 ### Modified
 * Created common variables.json at project root
