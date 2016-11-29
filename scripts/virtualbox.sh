@@ -12,6 +12,9 @@
 #
 ###################################################################
 
+# Exit script immediately on non-zero status
+set -e
+
 VBOX_VERSION="$(cat $HOME/.vbox_version)"
 export MAKE='/usr/bin/gmake -i'
 
