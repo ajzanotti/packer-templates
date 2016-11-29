@@ -12,15 +12,15 @@
 #
 ###################################################################
 
-VBOX_VERSION=$(cat $HOME/.vbox_version)
+VBOX_VERSION="$(cat $HOME/.vbox_version)"
 export MAKE='/usr/bin/gmake -i'
 
 yum install -y bzip2 gcc kernel-devel-`uname -r`
 
-cd /tmp
-mount -o loop $HOME/VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
+mount -o loop "$HOME"/VBoxGuestAdditions_"$VBOX_VERSION".iso /mnt
 sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
-rm -rf $HOME/VBoxGuestAdditions_*.iso
+
+rm -f "$HOME"/VBoxGuestAdditions_*.iso "$HOME"/.vbox_version
 
 exit 0
