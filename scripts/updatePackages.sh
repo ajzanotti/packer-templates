@@ -7,8 +7,8 @@
 #   Update all installed packages to the latest available
 #   version.
 #
-#   This script must be run BEFORE virtualbox.sh in order for
-#   VirtualBox Guest Additions to install correctly.
+#   It's recommended that this script be run BEFORE any other
+#   provisioning script.
 #
 #
 ###################################################################
