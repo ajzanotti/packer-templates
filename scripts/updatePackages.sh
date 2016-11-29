@@ -16,6 +16,5 @@
 yum update -y
 
 reboot
-sleep 60
 
 exit 0
