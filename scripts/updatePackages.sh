@@ -13,8 +13,8 @@
 #
 ###################################################################
 
+# Exit script immediately on non-zero status
+set -e
+
 yum update -y
-
 reboot
-
-exit 0
