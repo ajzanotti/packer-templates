@@ -12,43 +12,41 @@
 ###################################################################
 
 VAGRANT_HOME="/home/vagrant"
-DISTRO_VERSION="unknown"
-
-GetDistroVersion()
-{
-  distroVersionString=$(awk '{print $(NF-1);}' /etc/redhat-release)
-  regex='([0-9]{1})\.([0-9]{1,2})(\.[0-9]{4})?'
-
-  if [[ "${distroVersionString}" =~ ${regex} ]]
-  then
-    DISTRO_VERSION="${BASH_REMATCH[1]}"
-  fi
-}
-
-GetDistroVersion
-
-echo "vagrant" | passwd --stdin root
 
 groupadd --gid 501 vagrant
-useradd --create-home --home $VAGRANT_HOME --gid vagrant --uid 501 vagrant
+useradd --create-home --home "$VAGRANT_HOME" --gid vagrant --uid 501 vagrant
+
+echo "vagrant" | passwd --stdin root
 echo "vagrant" | passwd --stdin vagrant
 
 # Install vagrant insecure key
-mkdir -pm 700 $VAGRANT_HOME/.ssh
-curl -L https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -o $VAGRANT_HOME/.ssh/authorized_keys
-chmod 0600 $VAGRANT_HOME/.ssh/authorized_keys
-chown -R vagrant:vagrant $VAGRANT_HOME/.ssh
+mkdir -pm 700 "$VAGRANT_HOME"/.ssh
+curl -L https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -o "$VAGRANT_HOME"/.ssh/authorized_keys
+chmod 0600 "$VAGRANT_HOME"/.ssh/authorized_keys
+chown -R vagrant:vagrant "$VAGRANT_HOME"/.ssh
 
-# Allow vagrant to execute all commands without a password
-if [ "${DISTRO_VERSION}" == "5" ]
+# Read additional configuration from /etc/sudoers.d
+if ! grep -q '#includedir /etc/sudoers.d' /etc/sudoers
+then
+
+cat <<EOF>>/etc/sudoers
+
+## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+#includedir /etc/sudoers.d
+EOF
+
+fi
+
+if [ ! -d '/etc/sudoers.d' ]
 then
   mkdir /etc/sudoers.d
   chmod 750 /etc/sudoers.d
-  echo -e "## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)\n#includedir /etc/sudoers.d" >> /etc/sudoers
 fi
 
-echo "vagrant ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/vagrant
-echo "Defaults:vagrant !requiretty" >> /etc/sudoers.d/vagrant
+cat <<EOF>/etc/sudoers.d/vagrant
+vagrant ALL=(ALL) NOPASSWD:ALL
+Defaults:vagrant !requiretty
+EOF
 chmod 0440 /etc/sudoers.d/vagrant
 
 # Improve SSH performance by disabling DNS
