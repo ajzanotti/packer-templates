@@ -4,26 +4,27 @@
 #
 #	vagrant.sh
 #
-#   This script performs all setup required to prepare a
-#   build for the vagrant post-processor minus the installation
-#   of VirtualBox Guest Additions (see virtualbox.sh)
+#   Perform setup required by the Vagrant post-processor.
 #
 #
 ###################################################################
 
-VAGRANT_HOME="/home/vagrant"
+VAGRANT_USER="vagrant"
+VAGRANT_GROUP="$VAGRANT_USER"
+VAGRANT_PASSWORD="$VAGRANT_USER"
+VAGRANT_HOME="/home/$VAGRANT_USER"
 
-groupadd --gid 501 vagrant
-useradd --create-home --home "$VAGRANT_HOME" --gid vagrant --uid 501 vagrant
+groupadd --gid 501 "$VAGRANT_GROUP"
+useradd --create-home --home "$VAGRANT_HOME" --gid "$VAGRANT_GROUP" --uid 501 "$VAGRANT_USER"
 
-echo "vagrant" | passwd --stdin root
-echo "vagrant" | passwd --stdin vagrant
+echo "$VAGRANT_PASSWORD" | passwd --stdin root
+echo "$VAGRANT_PASSWORD" | passwd --stdin "$VAGRANT_USER"
 
-# Install vagrant insecure key
+# Install vagrant insecure public key
 mkdir -pm 700 "$VAGRANT_HOME"/.ssh
 curl -L https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -o "$VAGRANT_HOME"/.ssh/authorized_keys
 chmod 0600 "$VAGRANT_HOME"/.ssh/authorized_keys
-chown -R vagrant:vagrant "$VAGRANT_HOME"/.ssh
+chown -R "$VAGRANT_USER":"$VAGRANT_GROUP" "$VAGRANT_HOME"/.ssh
 
 # Read additional configuration from /etc/sudoers.d
 if ! grep -q '#includedir /etc/sudoers.d' /etc/sudoers
@@ -43,11 +44,11 @@ then
   chmod 750 /etc/sudoers.d
 fi
 
-cat <<EOF>/etc/sudoers.d/vagrant
-vagrant ALL=(ALL) NOPASSWD:ALL
-Defaults:vagrant !requiretty
+cat <<EOF>/etc/sudoers.d/"$VAGRANT_USER"
+$VAGRANT_USER ALL=(ALL) NOPASSWD:ALL
+Defaults:$VAGRANT_USER !requiretty
 EOF
-chmod 0440 /etc/sudoers.d/vagrant
+chmod 0440 /etc/sudoers.d/"$VAGRANT_USER"
 
 # Improve SSH performance by disabling DNS
 sed -i 's/^#UseDNS\ yes/UseDNS\ no/' /etc/ssh/sshd_config
