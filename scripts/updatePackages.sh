@@ -7,14 +7,11 @@
 #   Update all installed packages to the latest available
 #   version.
 #
-#   It's recommended that this script be run BEFORE any other
-#   provisioning script.
-#
 #
 ###################################################################
 
-# Exit script immediately on non-zero status
+# Exit immediately on non-zero status
 set -e
 
-yum update -y
+yum update -y -q
 reboot
