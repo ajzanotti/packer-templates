@@ -10,8 +10,9 @@ This project contains Packer templates for building and provisioning base VM ima
 
 ## Usage
 
-Position yourself in the project root. The provisioning scripts in the templates are referenced
-relative to this location, so commands must be executed there or they will fail.
+Position yourself in the project root. The provisioning scripts in the templates
+are referenced relative to this location, so commands must be executed there or
+they will fail.
 
 To verify a template
 ```Shell
@@ -37,6 +38,6 @@ For more information on Vagrant commands see the [documentation](https://docs.va
 
 ## License
 
-This project is distributed under the Apache License, Version 2.0. A copy of the license should be included with the original source
-material at the project root as LICENSE. If the license file is not present a copy can be obtained
-[here](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This project is distributed under the Apache License, Version 2.0. A copy of the
+license should be included with the original source material at the project root
+as LICENSE. If the license file is not present a copy can be obtained [here](http://www.apache.org/licenses/LICENSE-2.0.txt).
