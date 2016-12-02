@@ -26,11 +26,15 @@
 	"provisioners": [
 		{
 			"type": "shell",
+			"script": "scripts/updatePackages.sh"
+		},
+		{
+			"type": "shell",
 			"scripts": [
-				"scripts/updatePackages.sh",
 				"scripts/virtualbox.sh",
 				"scripts/vagrant.sh"
-			]
+			],
+			"pause_before": "30s"
 		}
 	],
 	"post-processors": [

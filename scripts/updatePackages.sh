@@ -7,15 +7,11 @@
 #   Update all installed packages to the latest available
 #   version.
 #
-#   This script must be run BEFORE virtualbox.sh in order for
-#   VirtualBox Guest Additions to install correctly.
-#
 #
 ###################################################################
 
-yum update -y
+# Exit immediately on non-zero status
+set -e
 
+yum update -y -q
 reboot
-sleep 60
-
-exit 0

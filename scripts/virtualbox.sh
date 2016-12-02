@@ -4,23 +4,23 @@
 #
 #	virtualbox.sh
 #
-#		This script installs VirtualBox Guest Additions and
-#		required dependencies. This script will look for the
-#		installation ISO in the $HOME of the "ssh_username" user
-#		specified in the template.json.
+#		Install VirtualBox Guest Additions and required dependencies.
 #
 #
 ###################################################################
 
-VBOX_VERSION=$(cat $HOME/.vbox_version)
+# Exit immediately on non-zero status
+set -e
+
+VBOX_VERSION="$(cat $HOME/.vbox_version)"
 export MAKE='/usr/bin/gmake -i'
 
-yum install -y bzip2 gcc kernel-devel-`uname -r`
+yum install -y -q bzip2 gcc kernel-devel-`uname -r`
 
-cd /tmp
-mount -o loop $HOME/VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
+mount -o loop "$HOME"/VBoxGuestAdditions_"$VBOX_VERSION".iso /mnt
 sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
-rm -rf $HOME/VBoxGuestAdditions_*.iso
+
+rm -f "$HOME"/VBoxGuestAdditions_*.iso "$HOME"/.vbox_version
 
 exit 0
