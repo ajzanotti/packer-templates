@@ -26,13 +26,13 @@
 	"provisioners": [
 		{
 			"type": "shell",
-			"script": "scripts/updatePackages.sh"
+			"script": "scripts/centos/updatePackages.sh"
 		},
 		{
 			"type": "shell",
 			"scripts": [
-				"scripts/virtualbox.sh",
-				"scripts/vagrant.sh"
+				"scripts/centos/virtualbox.sh",
+				"scripts/centos/vagrant.sh"
 			],
 			"pause_before": "30s"
 		}
