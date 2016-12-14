@@ -13,5 +13,6 @@
 # Exit immediately on non-zero status
 set -e
 
-apt-get upgrade -qq
+apt-get update
+apt-get upgrade -y -q
 reboot
