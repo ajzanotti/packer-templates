@@ -36,6 +36,10 @@ vagrant up
 
 For more information on Vagrant commands see the [documentation](https://docs.vagrantup.com).
 
+## Known Issues
+
+* The centos-5 template will not build on VirtualBox 5.1
+
 ## License
 
 This project is distributed under the Apache License, Version 2.0. A copy of the
