@@ -32,7 +32,7 @@
 			"type": "shell",
 			"scripts": [
 				"scripts/centos/virtualbox.sh",
-				"scripts/centos/vagrant.sh"
+				"scripts/generic/vagrant.sh"
 			],
 			"pause_before": "30s"
 		}
