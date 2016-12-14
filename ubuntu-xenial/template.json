@@ -55,7 +55,7 @@
 			"type": "shell",
 			"scripts": [
 				"scripts/ubuntu/virtualbox.sh",
-				"scripts/ubuntu/vagrant.sh"
+				"scripts/generic/vagrant.sh"
 			],
 			"pause_before": "30s"
 		}

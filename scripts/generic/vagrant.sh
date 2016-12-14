@@ -14,8 +14,6 @@ VAGRANT_GROUP="$VAGRANT_USER"
 VAGRANT_PASSWORD="$VAGRANT_USER"
 VAGRANT_HOME="/home/$VAGRANT_USER"
 
-apt-get install -y -q curl
-
 groupadd --gid 501 "$VAGRANT_GROUP"
 useradd --create-home --home "$VAGRANT_HOME" --gid "$VAGRANT_GROUP" --uid 501 "$VAGRANT_USER"
 
@@ -51,5 +49,8 @@ $VAGRANT_USER ALL=(ALL) NOPASSWD:ALL
 Defaults:$VAGRANT_USER !requiretty
 EOF
 chmod 0440 /etc/sudoers.d/"$VAGRANT_USER"
+
+# Improve SSH performance by disabling DNS
+sed -i 's/^#UseDNS\ yes/UseDNS\ no/' /etc/ssh/sshd_config
 
 exit 0
