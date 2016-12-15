@@ -3,7 +3,7 @@
 	"min_packer_version": "0.12.0",
 	"builders": [
 		{
-			"name": "vagrant-ubuntu-xenial.x86_64",
+			"name": "vagrant-ubuntu-xenial.amd64",
 			"type": "virtualbox-iso",
 			"iso_checksum": "29a8b9009509b39d542ecb229787cdf48f05e739a932289de9e9858d7c487c80",
 			"iso_checksum_type": "sha256",
