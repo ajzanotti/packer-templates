@@ -17,8 +17,8 @@ VAGRANT_HOME="/home/$VAGRANT_USER"
 groupadd --gid 501 "$VAGRANT_GROUP"
 useradd --create-home --home "$VAGRANT_HOME" --gid "$VAGRANT_GROUP" --uid 501 "$VAGRANT_USER"
 
-echo "$VAGRANT_PASSWORD" | passwd --stdin root
-echo "$VAGRANT_PASSWORD" | passwd --stdin "$VAGRANT_USER"
+echo root:"$VAGRANT_PASSWORD" | chpasswd
+echo "$VAGRANT_USER":"$VAGRANT_PASSWORD" | chpasswd
 
 # Install vagrant insecure public key
 mkdir -pm 700 "$VAGRANT_HOME"/.ssh
