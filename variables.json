@@ -1,5 +1,9 @@
 {
   "cpus": "1",
   "memory": "512",
-  "mirror": "http://mirrors.kernel.org"
+  "mirror": "http://mirrors.kernel.org",
+  "aws_access_key": "<AWS_ACCESS_KEY>",
+  "aws_secret_key": "<AWS_SECRET_KEY>",
+  "aws_region": "us-east-1",
+  "aws_s3_bucket_name": "<AWS_S3_BUCKET_NAME>"
 }
