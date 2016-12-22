@@ -1,10 +1,12 @@
 {
-	"description": "CentOS 7 64-bit",
+	"description": "CentOS 7 x86_64 OVA Base",
 	"min_packer_version": "0.12.0",
 	"builders": [
 		{
-			"name": "vagrant-centos-7.x86_64",
+			"name": "ova-base-centos-7.x86_64",
 			"type": "virtualbox-iso",
+			"output_directory": "centos-7/output/",
+			"format": "ova",
 			"headless": true,
 			"iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
 			"iso_checksum_type": "sha256",
@@ -14,7 +16,6 @@
 			"boot_command": [
 				"<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
 			],
-			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"guest_os_type": "RedHat_64",
 			"http_directory": "centos-7/http",
 			"shutdown_command": "echo 'packer' | shutdown -P now",
@@ -28,20 +29,6 @@
 		{
 			"type": "shell",
 			"script": "scripts/centos/updatePackages.sh"
-		},
-		{
-			"type": "shell",
-			"scripts": [
-				"scripts/centos/virtualbox.sh",
-				"scripts/generic/vagrant.sh"
-			],
-			"pause_before": "30s"
-		}
-	],
-	"post-processors": [
-		{
-			"type": "vagrant",
-			"output": "{{build_name}}_{{.Provider}}{{timestamp}}.box"
 		}
 	]
 }
