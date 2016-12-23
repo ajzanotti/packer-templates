@@ -1,34 +1,16 @@
 {
-	"description": "CentOS 7 64-bit Amazon Import",
+	"description": "CentOS 7 x86_64 Amazon Import",
 	"min_packer_version": "0.12.0",
 	"builders": [
 		{
 			"name": "amazon-import-centos-7.x86_64",
-			"type": "virtualbox-iso",
+			"type": "virtualbox-ovf",
 			"format": "ova",
 			"headless": true,
-			"iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
-			"iso_checksum_type": "sha256",
-			"iso_url": "{{user `mirror`}}/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+			"source_path": "{{user `ova_path`}}",
 			"ssh_username": "root",
 			"ssh_password": "toor",
-			"boot_command": [
-				"<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
-			],
-			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-			"guest_os_type": "RedHat_64",
-			"http_directory": "centos-7/http",
-			"shutdown_command": "echo 'packer' | shutdown -P now",
-			"vboxmanage": [
-				["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
-				["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
-			]
-		}
-	],
-	"provisioners": [
-		{
-			"type": "shell",
-			"script": "scripts/centos/updatePackages.sh"
+			"shutdown_command": "echo 'packer' | shutdown -P now"
 		}
 	],
 	"post-processors": [
