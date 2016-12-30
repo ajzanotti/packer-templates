@@ -13,6 +13,14 @@
 			"shutdown_command": "echo 'packer' | shutdown -P now"
 		}
 	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"scripts": [
+				"scripts/centos/cloudInit.sh"
+			]
+		}
+	],
 	"post-processors": [
 		{
 			"type": "amazon-import",
