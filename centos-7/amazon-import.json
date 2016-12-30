@@ -17,7 +17,7 @@
 		{
 			"type": "shell",
 			"scripts": [
-				"scripts/centos/cloudInit.sh"
+				"scripts/centos/amazonImport.sh"
 			]
 		}
 	],

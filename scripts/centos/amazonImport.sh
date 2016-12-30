@@ -2,9 +2,11 @@
 
 ###################################################################
 #
-# cloudInit.sh
+# amazonImport.sh
 #
-#   Install cloud-init.
+#   Perform all installation, configuration, and provisioning
+#   necessary for machines that will be processed by the
+#   amazon-import post-processor.
 #
 #
 ###################################################################
