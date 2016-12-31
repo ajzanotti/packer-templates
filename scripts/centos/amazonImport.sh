@@ -20,7 +20,4 @@ yum install -y -q cloud-init
 randomRootPassword="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
 echo root:"$randomRootPassword" | chpasswd
 
-# Put SELinux in enforcing mode
-sed -i 's/^SELINUX=permissive/SELINUX=enforcing/' /etc/selinux/config
-
 exit 0
