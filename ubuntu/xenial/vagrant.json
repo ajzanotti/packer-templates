@@ -39,7 +39,7 @@
 			],
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"guest_os_type": "Ubuntu_64",
-			"http_directory": "ubuntu-xenial/http",
+			"http_directory": "ubuntu/xenial/http",
 			"shutdown_command": "echo 'packer' | shutdown -P now",
 			"vboxmanage": [
 				["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],

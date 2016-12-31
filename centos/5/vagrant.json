@@ -16,7 +16,7 @@
 			],
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"guest_os_type": "RedHat_64",
-			"http_directory": "centos-5/http",
+			"http_directory": "centos/5/http",
 			"shutdown_command": "echo 'packer' | poweroff",
 			"vboxmanage": [
 				["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
