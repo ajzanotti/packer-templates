@@ -16,16 +16,16 @@ root.
 
 To create the OVA
 ```Shell
-packer build -var-file=variables/common.json centos-7/ova-base.json
+packer build -var-file=variables/common.json centos/7/ova-base.json
 ```
 
 To build a Vagrant box from an OVA
 ```Shell
-packer build -var "ova_path=path/to/OVA" centos-7/vagrant.json
+packer build -var "ova_path=path/to/OVA" centos/7/vagrant.json
 ```
 
 Note that use of the amazon-import.json template is __ADVANCED__ and will require
 additional setup in AWS. Details are available [here](http://docs.aws.amazon.com/vm-import/latest/userguide/import-vm-image.html).
 ```Shell
-packer build -var-file=variables/aws.json -var "ova_path=path/to/OVA" centos-7/amazon-import.json
+packer build -var-file=variables/aws.json -var "ova_path=path/to/OVA" centos/7/amazon-import.json
 ```

@@ -31,7 +31,7 @@ packer build -var-file=variables/common.json ubuntu-xenial/vagrant.json
 Not all templates will produce a Vagrant box, but to import and launch the build
 output for those that do
 ```Shell
-vagrant box add my_name/box_name output_name.box
+vagrant box add my_name/box_name output/vagrant/output_name.box
 
 mkdir test
 cd test
@@ -43,7 +43,7 @@ For more information on Vagrant commands see the [documentation](https://docs.va
 
 ## Known Issues
 
-* The centos-5 template will not build on VirtualBox 5.1
+* CentOS 5 will not build on VirtualBox 5.1
 
 ## License
 
