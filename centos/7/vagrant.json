@@ -1,10 +1,11 @@
 {
-	"description": "CentOS 7 x86_64 Vagrant VirtualBox",
+	"description": "CentOS 7 x86_64 Vagrant",
 	"min_packer_version": "0.12.0",
 	"builders": [
 		{
-			"name": "vagrant-vbox-centos-7.x86_64",
+			"name": "centos-7.x86_64",
 			"type": "virtualbox-ovf",
+			"output_directory": "output/{{build_name}}/vagrant",
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"headless": true,
 			"source_path": "{{user `ova_path`}}",
@@ -25,7 +26,7 @@
 	"post-processors": [
 		{
 			"type": "vagrant",
-			"output": "{{build_name}}_{{.Provider}}{{timestamp}}.box"
+			"output": "output/vagrant/{{build_name}}-{{.Provider}}{{timestamp}}.box"
 		}
 	]
 }
