@@ -43,7 +43,7 @@ For more information on Vagrant commands see the [documentation](https://docs.va
 
 ## Known Issues
 
-* The centos-5 template will not build on VirtualBox 5.1
+* CentOS 5 will not build on VirtualBox 5.1
 
 ## License
 
