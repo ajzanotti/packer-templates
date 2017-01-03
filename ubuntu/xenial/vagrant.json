@@ -1,5 +1,5 @@
 {
-	"description": "Ubuntu Xenial Xerus 16.04.1 64-bit",
+	"description": "Ubuntu Xenial Xerus amd64",
 	"min_packer_version": "0.12.0",
 	"builders": [
 		{

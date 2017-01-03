@@ -1,5 +1,5 @@
 {
-	"description": "CentOS 6 64-bit",
+	"description": "CentOS 6 x86_64",
 	"min_packer_version": "0.12.0",
 	"builders": [
 		{
