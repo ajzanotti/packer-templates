@@ -29,3 +29,9 @@ additional setup in AWS. Details are available [here](http://docs.aws.amazon.com
 ```Shell
 packer build -var-file=variables/aws.json -var "ova_path=path/to/OVA" centos/7/amazon-import.json
 ```
+
+The amazon-import template uses cloud-init to perform additional configuration of
+cloud instances at launch, such as setting up a default user. The default config
+file is at assets/cloud.cfg. It can be modified to suit whatever need, and will be
+copied to the server as part of the build. See the [cloud-init website](https://cloudinit.readthedocs.io/en/latest/)
+for more information.

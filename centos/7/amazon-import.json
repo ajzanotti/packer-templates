@@ -20,6 +20,11 @@
 			"scripts": [
 				"scripts/centos/amazonImport.sh"
 			]
+		},
+		{
+			"type": "file",
+			"source": "centos/7/assets/cloud.cfg",
+			"destination": "/etc/cloud/cloud.cfg"
 		}
 	],
 	"post-processors": [
