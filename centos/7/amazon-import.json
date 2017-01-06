@@ -11,6 +11,7 @@
 			"source_path": "{{user `ova_path`}}",
 			"ssh_username": "root",
 			"ssh_password": "toor",
+			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"shutdown_command": "echo 'packer' | shutdown -P now"
 		}
 	],

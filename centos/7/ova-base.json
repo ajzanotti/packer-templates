@@ -16,6 +16,7 @@
 			"boot_command": [
 				"<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
 			],
+			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"guest_os_type": "RedHat_64",
 			"http_directory": "centos/7/http",
 			"shutdown_command": "echo 'packer' | shutdown -P now",
