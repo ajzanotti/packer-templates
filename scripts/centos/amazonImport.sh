@@ -20,4 +20,6 @@ yum install -y -q cloud-init
 randomRootPassword="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
 echo root:"$randomRootPassword" | chpasswd
 
+rm -f "$HOME"/VBoxGuestAdditions_*.iso "$HOME"/.vbox_version
+
 exit 0
