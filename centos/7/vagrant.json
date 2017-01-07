@@ -1,0 +1,32 @@
+{
+	"description": "CentOS 7 x86_64 Vagrant",
+	"min_packer_version": "0.12.0",
+	"builders": [
+		{
+			"name": "centos-7.x86_64",
+			"type": "virtualbox-ovf",
+			"output_directory": "output/{{build_name}}/vagrant",
+			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+			"headless": true,
+			"source_path": "{{user `ova_path`}}",
+			"ssh_username": "root",
+			"ssh_password": "toor",
+			"shutdown_command": "echo 'packer' | shutdown -P now"
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"scripts": [
+				"scripts/centos/virtualbox.sh",
+				"scripts/generic/vagrant.sh"
+			]
+		}
+	],
+	"post-processors": [
+		{
+			"type": "vagrant",
+			"output": "output/vagrant/{{build_name}}-{{.Provider}}{{timestamp}}.box"
+		}
+	]
+}

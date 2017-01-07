@@ -1,2 +1,2 @@
-output-*
-packer_cache
+/output
+/packer_cache

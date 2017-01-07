@@ -1,13 +1,16 @@
 {
-	"description": "CentOS 7 64-bit",
-	"min_packer_version": "0.8.6",
+	"description": "CentOS 7 x86_64 OVA Base",
+	"min_packer_version": "0.12.0",
 	"builders": [
 		{
-			"name": "vagrant-centos-7.x86_64",
+			"name": "centos-7.x86_64",
 			"type": "virtualbox-iso",
-			"iso_checksum": "f90e4d28fa377669b2db16cbcb451fcb9a89d2460e3645993e30e137ac37d284",
+			"output_directory": "output/{{build_name}}/OVA",
+			"format": "ova",
+			"headless": true,
+			"iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
 			"iso_checksum_type": "sha256",
-			"iso_url": "{{user `mirror`}}/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso",
+			"iso_url": "{{user `mirror`}}/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
 			"ssh_username": "root",
 			"ssh_password": "toor",
 			"boot_command": [
@@ -15,7 +18,7 @@
 			],
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"guest_os_type": "RedHat_64",
-			"http_directory": "centos-7/http",
+			"http_directory": "centos/7/http",
 			"shutdown_command": "echo 'packer' | shutdown -P now",
 			"vboxmanage": [
 				["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
@@ -26,17 +29,7 @@
 	"provisioners": [
 		{
 			"type": "shell",
-			"scripts": [
-				"scripts/updatePackages.sh",
-				"scripts/virtualbox.sh",
-				"scripts/vagrant.sh"
-			]
-		}
-	],
-	"post-processors": [
-		{
-			"type": "vagrant",
-			"output": "{{build_name}}_{{.Provider}}{{timestamp}}.box"
+			"script": "scripts/centos/updatePackages.sh"
 		}
 	]
 }
