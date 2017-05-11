@@ -43,7 +43,7 @@ For more information on Vagrant commands see the [documentation](https://docs.va
 
 ## Known Issues
 
-* CentOS 5 will not build on VirtualBox 5.1
+There are no known issues at this time.
 
 ## License
 
